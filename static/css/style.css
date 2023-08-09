@@ -1,0 +1,199 @@
+table{
+    height:20px;
+    border-collapse: collapse; /* Essa propriedade faz com que a tabela fique próxima, ajustando como deve ficar */
+    background-color: rgb(209, 209, 209);
+}
+td, th {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+.campo-pequeno{
+    width: 80px;
+}
+
+.campo-medio{
+    width: 120px;
+}
+
+.campo-maior{
+    width: 250px;
+}
+
+.navbar-color {
+    background-color: #00174F;
+}
+
+.navbar-icone {
+    background-color: rgb(56 189 248);
+}
+
+.fundo{
+    height: 82.5vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main-home{
+
+    max-width: 900px;
+}
+
+.link{
+    color: #07FE03;
+}
+
+.text{
+    color: #F56D18;
+}
+
+.fundo-azul{
+    background-color: rgb(207 250 254);
+}
+
+.opcoes {
+    background-color: #00174F; color: white; width: 500px; height: 100px; font-size: 1.7rem; border-radius: 10px; text-align: center; margin: 70px 100px;
+}
+
+.opcoes2 {
+    background-color: #00174F; color: white; width: 60%; height: 150px; font-size: 1.7rem; border-radius: 10px; text-align: center; margin: auto; padding: 30px 0; font-family: Consolas;
+}
+
+.opcoes3 {
+    background-color: #00174F; color: white; width: 60%; min-height: 100px; font-size: 1.7rem; border-radius: 10px; text-align: center; margin: auto; padding: 30px 0; font-family: Consolas;
+}
+
+.jogador{
+    background-color: rgb(231 229 228); width:80%; min-height: 50px; font-size: 1.5rem; font-family: Consolas; font-weight: 400; text-align: center; padding: 10px 0; margin-top: 15px; border-radius: 10px; margin-left:auto; margin-right: auto;
+}
+
+
+button > a:hover{
+    color:black;
+}
+
+.form{
+    margin-top: 100px; margin-left: 35%;
+}
+
+.input{
+    width: 300px; height: 35px; border-radius: 10px; border: black; margin-bottom: 20px;
+}
+
+.checkbox{
+    width: 30px; height: 20px; border-radius: 10px; border: black; margin-bottom: 20px; margin-right: 40px;
+}
+
+.label{
+    font-size: 1.2rem; font-weight: 500; margin-right: 15px; margin-bottom: 20px;
+}
+
+.centro{
+    margin: 0% 15%;
+}
+
+.jogo{
+    background-color: white; width: 300px; min-height: 100px; padding: 0px 10px; text-align: center; margin-left:auto;
+    margin-right:auto; margin-top: 15px; margin-bottom:15px; border-radius: 20px;
+}
+
+.avancar_voltar{
+    background-color: white; font-size:1.3rem; font-family: Consolas; padding: 5px; margin-top: 30px;border-radius: 20px;
+}
+
+.campeonato {
+    background-color: white; width: 350px; height: 250px; padding: 25px 25px; text-align: center; border-radius: 20px; font-size: 1.2rem; font-family: Consolas;
+}
+
+.formulario{
+    margin:100px 600px;
+}
+
+@media screen and (max-width: 1180px) {
+    .navbar {
+      display: none; /* Esconder a navbar em dispositivos menores */
+    }
+
+    .opcoes{
+        background-color: #00174F; color: white; width: 250px; height: 100px; font-size: 1.2rem; border-radius: 10px; text-align: center; margin: 50px 60px;
+    }
+    .opcoes2{
+        background-color: #00174F; color: white; width: 220px; height: 300px; font-size: 1.2rem; border-radius: 10px; text-align: center; margin: auto;
+    }
+    .opcoes3{
+        background-color: #00174F; color: white; width: 220px; min-height: 100px; font-size: 1.2rem; border-radius: 10px; text-align: center; margin: auto;
+    }
+
+    .centro{
+        margin: 0% 5%;
+    }
+    
+  }
+
+  @media screen and (max-height: 700px) {
+    .opcoes{
+        background-color: #00174F; color: white; width: 250px; height: 60px; font-size: 1.2rem; border-radius: 10px; text-align: center; margin: 50px 60px;
+    }
+   
+  }
+
+  @media  screen and (max-width: 768px) {
+    .form{
+        margin-top: 100px; margin-left: 0;
+    }
+    .input{
+        width: 250px; height: 35px; border-radius: 10px; border: black; margin-bottom: 20px;
+    }
+    .centro{
+        margin: 0% 0%;
+    }
+    table{
+        border-collapse: collapse; /* Essa propriedade faz com que a tabela fique próxima, ajustando como deve ficar */
+        background-color: rgb(209, 209, 209);
+    }
+    td, th {
+        border: 1px solid black;
+        padding: 0px;
+    }
+    
+    .campo-pequeno{
+        width: 20px;
+    }
+    
+    .campo-medio{
+        width: 60px;
+    }
+    
+    .campo-maior{
+        width: 120px;
+    }
+    .jogo{
+        background-color: white; width: 200px; min-height: 100px; padding: 0px 10px; text-align: center; margin-left:auto;
+        margin-right:auto; margin-top: 15px; margin-bottom:15px; border-radius: 20px;
+    }
+
+  }
+
+  @media screen and (max-width: 370px){
+
+    .opcoes{
+        background-color: #00174F; color: white; width: 220px; height: 100px; font-size: 1.2rem; border-radius: 10px; text-align: center; margin: 30px 30px;
+    }
+
+    .opcoes2{
+        background-color: #00174F; color: white; width: 220px; height: 150px; font-size: 1.2rem; border-radius: 10px; text-align: center; margin: auto;
+    }
+
+    .opcoes3{
+        background-color: #00174F; color: white; width: 220px; min-height: 100px; font-size: 1.2rem; border-radius: 10px; text-align: center; margin: auto;
+    }
+
+    .search{
+        display: none;
+    }
+
+    .form{
+        width: 100%;
+    }
+  }
+

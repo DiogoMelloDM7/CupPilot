@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} CupPilot {% endblock %}
+
+{% block content %}
+<main class="fundo" style="background-image: url('{% static 'images/fundosite.jpg' %}');">
+    <div class="main-home text-gray-100 md:p-4 lg:px-32 lg:pt-24">
+        <h1 class="text-4xl mb-2 ">Bem-vindo ao CupPilot</h1>
+        <h2 class="text-3xl mb-2 ">Venha gerenciar seus campeonatos de maneira rápida e fácil</h2>
+        <h3 class="text-2xl mb-2 ">Para criar seu campeonato faça login ou cadastre-se caso não tenha nenhuma conta</h3>
+        <a href="{% url 'campeonato:login' %}">
+        <button type="button" class="btn btn-outline-light w-6/12 mt-3">Login</button>
+        </a>
+        <a href="{% url 'campeonato:criarconta' %}">
+        <button type="button" class="btn btn-outline-light w-6/12 mt-3">Criar Conta</button>
+        <a>
+    </div>
+</main>
+
+{% endblock %}

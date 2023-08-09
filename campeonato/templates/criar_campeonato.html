@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %} Criar campeonato {% endblock %}
+
+{% block content%}
+
+<main class='fundo-azul py-2' style='min-height: 789px;'>
+    <div class='opcoes2'>
+        <h1>Crie seu campeonato agora mesmo, escolha abaixo as configurações de acordo com suas preferências</h1>
+    </div>
+    <form class='form' method="POST">
+        {% csrf_token %}
+        <div>
+            <label class='label' for='nome'>Nome do campeonato </label>
+            <input class='input' type='text' placeholder='Insira o nome do campeonato' name='nome' id='nome'>
+        </div>
+        <div>
+            <label class='label' for='numero_times'>Número de times </label>
+            <input class='input' type='number' placeholder='Insira o número de times do campeonato' name='numero_times' id='numero_times'>
+        </div>
+        <div>
+            <h1 class='label'>Qual o formato do campeonato?<br>
+            <label class='label' for='mata_mata'>Mata-Mata</label>
+            <input class="checkbox" type='radio' name='modelo' id='mata_mata' value='Mata-Mata'>
+            <label class='label' for='pontoscorridos'>Pontos corridos</label>
+            <input class="checkbox" type='radio' name='modelo' id='pontoscorridos' value='Pontos corridos'>
+            <label class='label' for='grupos_mata_mata'>Grupos + Mata-Mata</label>
+            <input class="checkbox" type='radio' name='modelo' id='grupos_mata_mata' value='Grupos + mata-mata'>
+        </div>
+        <div>
+            <h1 class='label'>Jogos de ida e volta? </h1>
+            <label class='label' for='ida_volta_sim'>Sim </label>
+            <input class='checkbox' type='radio' name='ida_volta' id='ida_volta_sim' value='Sim'><br>
+            <label class='label' for='ida_volta_nao'>Não </label>
+            <input class='checkbox' type='radio' name='ida_volta' id='ida_volta_nao' value='Não'>
+        </div>
+        <div>
+            <label class='label' for='quant_cartoes'>Cartões amarelos para suspensão </label>
+            <input class='input' type='number' placeholder='Insira a quantidade de cartões' name='quant_cartoes' id='quant_cartoes'>
+        </div>
+        <div>
+            <h1 class='label'>Tipo do competidor </h1>
+            <label class='label' for='pessoa'>Pessoa (Individual) </label>
+            <input class='checkbox' type='radio' name='competidor' id='pessoa' value='individual'><br>
+            <label class='label' for='equipe'>Equipe (Coletivo)</label>
+            <input class='checkbox' type='radio' name='competidor' id='equipe' value='coletivo'>
+        </div>
+
+        <button name="confirm" type="submit" class="btn btn-success mt-4 w-5/12">Criar Campeonato</button>
+
+    </form>
+
+</main>
+
+{% endblock %}

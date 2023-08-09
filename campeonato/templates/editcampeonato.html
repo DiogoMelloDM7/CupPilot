@@ -1,0 +1,61 @@
+{% extends 'base.html' %} 
+
+{% block title%} {{ object.nome }} {% endblock %}
+
+{% block content %}
+<main class='fundo-azul lg:py-16 px-16 justify-between w-full flex flex-col lg:flex-row' style='min-height: 789px;'>
+    <div class="flex w-full lg:w-8/12 mb-4 lg:mb-0">
+        <div class='overflow-x-auto'>
+        <table class='table-auto'>
+            <tr>
+                <th>Posição<th class='campo-maior'>Equipe<th>Pontos<th>Vitórias<th>Empates<th>Derrotas<th>Gols Pró<th>Gols Contra<th>Aproveitamento
+            </tr>
+            {% for tabela in object.tabela_do_campeonato.all %}
+            {% for equipe in tabela.tabela_da_equipe.all %}
+            
+            
+            <tr>
+                <th>{{ forloop.counter }}º
+                <td><a href="{% url 'campeonato:detalhes' equipe.id %}">{{ equipe.nome }}</a>
+                <td>{{ equipe.pontos }}
+                <td>{{ equipe.vitorias }}
+                <td>{{ equipe.empates }}
+                <td>{{ equipe.derrotas }}
+                <td>{{ equipe.gols_feitos }}
+                <td>{{ equipe.gols_sofridos }}
+                <td>{{ equipe.aproveitamento }} %
+                
+            </tr>
+            {% endfor %}
+            {% endfor %}
+
+        </table>
+    </div>
+    </div>
+    <div class="lg:flex lg:w-3/12 bg-blue-800 flex-col rounded-xl" style='min-height:350px;'>
+            <div class='jogo py-1' style='margin-top:80px;'>
+                <h1 class='text-lg font-bold'>Local </h1>
+                <h1 class='text-lg font-bold'>Horário </h1>
+                <h1 class='text-xl font-bold pt-4'>BANIDOS 5 X 1 REAL MADRID</h1>
+            </div>
+            <div class='jogo py-1'>
+                <h1 class='text-lg font-bold'>Local </h1>
+                <h1 class='text-lg font-bold'>Horário </h1>
+                <h1 class='text-xl font-bold pt-4'>Manchester City 2 X 0 Manchester United</h1>
+            </div>
+            <div class='jogo py-1'>
+                <h1 class='text-lg font-bold'>Local </h1>
+                <h1 class='text-lg font-bold'>Horário </h1>
+                <h1 class='text-xl font-bold pt-4'>Manchester City 2 X 0 Manchester United</h1>
+            </div>
+            
+            
+        <div class="flex justify-between">
+            <a href="#"><h1 class='avancar_voltar'>< Rodada Anterior </h1><a>
+            <a href="#"><h1 class='avancar_voltar'>Próxima Rodada ></h1></a>
+
+        </div>
+        
+</main>
+
+{% endblock %}

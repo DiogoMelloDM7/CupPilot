@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %} Detalhes da equipe {% endblock %}
+
+{% block content %}
+
+<main class='fundo-azul py-2' style='min-height: 789px;'>
+    <div class='centro' style="min-height: 789px;">
+        <div class='opcoes3'>
+        <h1>{{ object.nome|upper }}<h1>
+        </div>
+        {% for player in object.jogador.all %}
+                <div class='jogador'>
+                    {{ player.nome|upper }} | {{ player.numero }} |
+                    {% if player.data_nascimento %}
+                      {{ player.data_nascimento }} |
+                    {% else %}
+                    <span style="color: red;">DATA NÃO INFORMADA </span>|
+                    {% endif %}
+                       {{ player.posicao|upper }}
+                </div>
+        {% endfor %}
+    <div>
+
+</main>
+
+{% endblock %}

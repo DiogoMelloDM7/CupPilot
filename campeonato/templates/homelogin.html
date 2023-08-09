@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} CupPilot {% endblock %}
+
+{% block content %}
+
+<main class='fundo-azul py-2' style="height:82.5vh"> 
+    <div>
+    <button class="opcoes">
+        <a href="{% url 'campeonato:criar_campeonato' %}">
+        <h1>Criar campeonato</h1><a>
+        </button>
+    </div>
+    <div>
+    <button class="opcoes">
+        <a href="{% url 'campeonato:meuscampeonatos' %}">
+        <h1>Ver meus campeonatos</h1></a>
+    </button><a href="#">
+    </div>
+    <div>
+    <button class="opcoes">
+        <a href="{% url 'campeonato:campeonatosmaisvistos' %}">
+        <h1>Campeonatos mais vistos</h1></a>
+    </button>
+    </div>
+</main>
+
+{% endblock %}

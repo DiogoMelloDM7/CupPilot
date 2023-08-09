@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Meus Campeonatos {% endblock %}
+
+{% block content %}
+
+<main class='fundo-azul py-2 flex justify-evenly' style='min-height: 82.5vh;'>
+    {% for campeonato in lista_campeonatos %}
+    <div class='campeonato mt-16'>
+        <p><a href="{% url 'campeonato:campeonato_dados' campeonato.id %}"><span style="font-size: 1.7rem; font-weight: 700;">{{ campeonato }}</span></a><br> Número de competidores: {{ campeonato.numero_de_equipes }}<br>Formato: {{ campeonato.formato }} <br>Jogos de ida e volta: {{ campeonato.jogos_ida_e_volta }}
+        </p>
+        <a href="{% url 'campeonato:campeonato_dados' campeonato.id %}" style="color: blue;">Ver campeonato</a><br>
+        <a href="{% url 'campeonato:campeonato_edit' campeonato.id %}" style="color: green;">Editar Campeonato</a>
+    </div>
+    {% endfor %}
+</main>
+
+{% endblock %}

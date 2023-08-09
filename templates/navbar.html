@@ -1,0 +1,38 @@
+
+<navbar class="navbar-color p-3 flex justify-between">
+    <a href="{% url 'campeonato:homepage' %}">
+    <div class="text-white px-5 py-3 rounded-lg">
+        <h1>CupPilot</h1>
+    </div>
+    <button class="text-white navbar-icone px-5 py-3 rounded-lg search">
+        <a href="#"><h1>Pesquisar Campeonatos</h1></a>
+    </button>
+    <a href="{% url 'campeonato:criar_campeonato' %}">
+        <button class="text-white navbar-icone px-5 py-3 rounded-lg navbar">
+            <h1>Criar Campeonato</h1>
+        </button>
+    </a>
+    {% if user.is_authenticated %}
+    <a href="{% url 'campeonato:editarperfil' user.id %}">
+        <button class="text-white navbar-icone px-5 py-3 rounded-lg navbar">
+            <h1>Editar Perfil</h1>
+        </button>
+    </a>
+    <a href="{% url 'campeonato:logout' %}">
+        <button class="text-white navbar-icone px-5 py-3 rounded-lg navbar">
+            <h1>Sair</h1>
+        </button>
+    </a>
+    {% else %}
+    <a href="{% url 'campeonato:login' %}">
+        <button class="text-white navbar-icone px-5 py-3 rounded-lg navbar">
+            <h1>Login</h1>
+        </button>
+    </a>
+    <a href="{% url 'campeonato:criarconta' %}">
+        <button class="text-white navbar-icone px-5 py-3 rounded-lg navbar">
+            <h1>Criar Conta</h1>
+        </button>
+    </a>
+    {% endif %}
+</navbar>

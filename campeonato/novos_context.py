@@ -7,14 +7,14 @@ from django.db.models import Q
 def lista_campeonatos_usuario(request):
     try:
         user = request.user
-        lista_campeonatos = Campeonato.objects.filter(organizador=user).order_by("visualizacoes")
+        lista_campeonatos = Campeonato.objects.filter(organizador=user).order_by("-visualizacoes")
         return {"lista_campeonatos":lista_campeonatos}
     except:
         lista_campeonatos = []
         return {"lista_campeonatos": lista_campeonatos}
     
 def campeonatos_mais_vistos(request):
-    lista_campeonatos_mais_vistos = Campeonato.objects.all().order_by("visualizacoes")
+    lista_campeonatos_mais_vistos = Campeonato.objects.all().order_by("-visualizacoes")
     return {"campeonatos_vistos": lista_campeonatos_mais_vistos}
 
 

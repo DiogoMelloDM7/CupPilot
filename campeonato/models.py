@@ -10,7 +10,6 @@ class Jogador(models.Model):
     numero = models.IntegerField()
     gols = models.IntegerField(blank=True, null=True)
     assistencias = models.IntegerField(blank=True, null=True)
-    RG_CPF = models.CharField(max_length=15)
 
     def __str__(self):
         return self.nome + " - " + self.equipe.nome
@@ -21,16 +20,14 @@ class Comissao(models.Model):
     cargo = models.CharField(max_length=50)
     nome = models.CharField(max_length=50)
     data_nascimento = models.DateField(blank=True, null=True)
-    RG_CPF = models.CharField(max_length=15)
 
     def __str__(self):
         return self.nome
 
 
 class Equipe(models.Model):
-    tabela = models.ForeignKey("Tabela", related_name="tabela_da_equipe", blank=True, null=True, on_delete=models.CASCADE)
+    campeonato = models.ForeignKey("Campeonato", related_name="equipes_campeonato", blank=True, null=True, on_delete=models.CASCADE)
     nome = models.CharField(max_length=50)
-    quant_atletas = models.IntegerField()
     pontos = models.IntegerField(blank=True, null=True, default=0)
     jogos = models.IntegerField(blank=True, null=True, default=0)
     gols_feitos = models.IntegerField(blank=True, null=True, default=0)
@@ -43,33 +40,25 @@ class Equipe(models.Model):
     aproveitamento = models.DecimalField(max_digits=5, decimal_places=2, default=0)
 
     def __str__(self):
-        return self.nome + " - " + self.tabela.campeonato.nome
+        return self.nome + " - " + self.campeonato.nome
 
 
 class Artilharia(models.Model):
     jogador_artilheiro_campeonato = models.ManyToManyField("Jogador")
-    tabela = models.ForeignKey("Tabela", related_name="artilheiros", on_delete=models.CASCADE,blank=True, null=True)
+    tabela_artilheiros = models.ForeignKey("Campeonato", related_name="artilheiros", on_delete=models.CASCADE,blank=True, null=True)
     gols = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
-        return self.tabela
+        return self.tabela_artilheiros
 
 
 class Assistente(models.Model):
     jogador_assistente_campeonato = models.ManyToManyField("Jogador")
-    tabela = models.ForeignKey("Tabela", related_name="assistentes", on_delete=models.CASCADE, blank=True, null=True)
+    tabela_assistentes = models.ForeignKey("Campeonato", related_name="assistentes", on_delete=models.CASCADE, blank=True, null=True)
     assistencias = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
-        return self.tabela
-
-
-class Tabela(models.Model):
-    campeonato = models.ForeignKey("Campeonato", related_name="tabela_do_campeonato", on_delete=models.CASCADE)
-    
-
-    def __str__(self):
-        return self.campeonato.nome
+        return self.tabela_assistentes
 
 
 class Jogo(models.Model):

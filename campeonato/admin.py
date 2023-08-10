@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Jogador, Comissao, Equipe, Artilharia, Assistente, Tabela, Jogo, Campeonato, Usuario
+from .models import Jogador, Comissao, Equipe, Artilharia, Assistente, Jogo, Campeonato, Usuario
 from django.contrib.auth.admin import UserAdmin
 
 campos = list(UserAdmin.fieldsets)
@@ -11,7 +11,6 @@ admin.site.register(Comissao)
 admin.site.register(Equipe)
 admin.site.register(Artilharia)
 admin.site.register(Assistente)
-admin.site.register(Tabela)
 admin.site.register(Jogo)
 admin.site.register(Campeonato)
 admin.site.register(Usuario, UserAdmin)

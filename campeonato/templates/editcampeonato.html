@@ -10,13 +10,13 @@
             <tr>
                 <th>Posição<th class='campo-maior'>Equipe<th>Pontos<th>Vitórias<th>Empates<th>Derrotas<th>Gols Pró<th>Gols Contra<th>Aproveitamento
             </tr>
-            {% for tabela in object.tabela_do_campeonato.all %}
-            {% for equipe in tabela.tabela_da_equipe.all %}
+            {% for equipe in object.equipes_campeonato.all %}
+            
             
             
             <tr>
                 <th>{{ forloop.counter }}º
-                <td><a href="{% url 'campeonato:detalhes' equipe.id %}">{{ equipe.nome }}</a>
+                <td><a href="{% url 'campeonato:editarequipe' equipe.id %}">{{ equipe.nome }}</a>
                 <td>{{ equipe.pontos }}
                 <td>{{ equipe.vitorias }}
                 <td>{{ equipe.empates }}
@@ -26,7 +26,7 @@
                 <td>{{ equipe.aproveitamento }} %
                 
             </tr>
-            {% endfor %}
+            
             {% endfor %}
 
         </table>

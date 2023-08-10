@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block title %} Detalhes da equipe {% endblock %}
 
@@ -20,6 +21,7 @@
                        {{ player.posicao|upper }}
                 </div>
         {% endfor %}
+        
     <div>
 
 </main>

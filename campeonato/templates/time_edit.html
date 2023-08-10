@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %} Detalhes da equipe {% endblock %}
+
+{% block content %}
+
+<main class='fundo-azul py-2' style='min-height: 789px;'>
+    <div class='centro' style="min-height: 789px;">
+        <div class='opcoes3'>
+        <h1>{{ equipe.nome|upper }}<h1>
+        </div>
+        <form method="POST">
+            {% csrf_token %}
+        {% for player in equipe.jogador.all %}
+                <div class='jogador py-3'>
+                    <label for='nome'>NOME: </label>
+                    <input style="width:400px;" class='rounded-lg m-2' id='nome' name='nome' type='text' value='{{ player.nome|upper }}'> <br>
+                    <label for='numero'>NÚMERO: </label>
+                    <input class='rounded-lg m-2' id='numero' name='numero' type='text' value='{{ player.numero }}'> <br>
+                    <label for='data'>DATA DE NASCIMENTO: </label>
+                    {% if player.data_nascimento %}
+                    <input class='rounded-lg m-2' id='data' name='data' type='text' value='{{ player.data_nascimento }}'> <br>
+                    {% else %}
+                    <input class='rounded-lg m-2' id='data' name='data' type='date' value='Data não Informada'><br>
+                    {% endif %}
+                    <label for='posicao'>POSIÇÃO: </label>
+                    <input class='rounded-lg m-2' id='posicao' name='posicao' type='text' value='{{ player.posicao|upper }}'>
+                </div>
+        {% endfor %}
+        </form>
+    <div>
+
+</main>
+
+{% endblock %}

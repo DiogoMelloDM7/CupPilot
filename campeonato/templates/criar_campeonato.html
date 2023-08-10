@@ -8,7 +8,7 @@
     <div class='opcoes2'>
         <h1>Crie seu campeonato agora mesmo, escolha abaixo as configurações de acordo com suas preferências</h1>
     </div>
-    <form class='form' method="POST">
+    <form class='form' method="POST" autocomplete='off'>
         {% csrf_token %}
         <div>
             <label class='label' for='nome'>Nome do campeonato </label>

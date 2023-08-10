@@ -10,7 +10,7 @@
         <div class='opcoes3'>
         <h1>{{ equipe.nome|upper }}<h1>
         </div>
-        <form method="POST">
+        <form method="POST" autocomplete='off'>
             {% csrf_token %}
         {% for player in equipe.jogador.all %}
                 <div class='jogador py-3'>

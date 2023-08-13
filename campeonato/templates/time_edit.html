@@ -10,24 +10,49 @@
         <div class='opcoes3'>
         <h1>{{ equipe.nome|upper }}<h1>
         </div>
-        <form method="POST" autocomplete='off'>
+        {% if quantidade_de_atletas > 0 %}
+        <form method="POST" autocomplete='off' action="{% url 'campeonato:editarequipe' equipe.id %}">
             {% csrf_token %}
-        {% for player in equipe.jogador.all %}
+        {% for player in equipe.jogadores.all %}
                 <div class='jogador py-3'>
+                    
+                    <input name='id{{ forloop.counter }}' value="{{ player.id }}" type="hidden">
                     <label for='nome'>NOME: </label>
-                    <input style="width:400px;" class='rounded-lg m-2' id='nome' name='nome' type='text' value='{{ player.nome|upper }}'> <br>
+                    <input style="width:400px;" class='rounded-lg m-2' id='nome' name='nome{{ forloop.counter }}' type='text' value='{{ player.nome|upper }}'> <br>
                     <label for='numero'>NÚMERO: </label>
-                    <input class='rounded-lg m-2' id='numero' name='numero' type='text' value='{{ player.numero }}'> <br>
-                    <label for='data'>DATA DE NASCIMENTO: </label>
+                    <input class='rounded-lg m-2' id='numero' name='numero{{ forloop.counter }}' type='text' value='{{ player.numero }}'> <br>
+                    
                     {% if player.data_nascimento %}
-                    <input class='rounded-lg m-2' id='data' name='data' type='text' value='{{ player.data_nascimento }}'> <br>
+                    <label for='data'>DATA DE NASCIMENTO: {{ player.data_nascimento }}</label>
+                    <input class='rounded-lg m-2' id='data' name='data{{ forloop.counter }}' type='date' value='{{ player.data_nascimento }}'><br>
                     {% else %}
-                    <input class='rounded-lg m-2' id='data' name='data' type='date' value='Data não Informada'><br>
+                    <label for='data'>DATA DE NASCIMENTO: DATA NÃO INFORMADA</label>
+                    <input class='rounded-lg m-2' id='data' name='data{{ forloop.counter }}' type='date' value='Data não Informada' required><br>
                     {% endif %}
                     <label for='posicao'>POSIÇÃO: </label>
-                    <input class='rounded-lg m-2' id='posicao' name='posicao' type='text' value='{{ player.posicao|upper }}'>
+                    <input class='rounded-lg m-2' id='posicao' name='posicao{{ forloop.counter }}' type='text' value='{{ player.posicao|upper }}'>
                 </div>
         {% endfor %}
+        <input type='hidden' name='quantidade' value='{{ quantidade_de_atletas }}'>
+        <button type='submit' value='att' name='confirm' class="btn btn-success my-4" style="width: 20%; margin-left: 40%; height:50px;">Confirmar alterações</button>
+        </form>
+        {% endif %}
+        <form method='POST' >
+            {% csrf_token %}
+            <div class='jogador'>
+                    <label for='nome'>NOME: </label>
+                    <input style="width:400px;" class='rounded-lg m-2' id='nome' name='novonome' type='text'> <br>
+                    <label for='numero'>NÚMERO: </label>
+                    <input class='rounded-lg m-2' id='numero' name='novonumero' type='text'> <br>
+                    
+                    <label for='data'>DATA DE NASCIMENTO: {{ player.data_nascimento }}</label>
+                    <input class='rounded-lg m-2' id='data' name='novadata' type='date' required><br>
+                    
+                    
+                    <label for='posicao'>POSIÇÃO: </label>
+                    <input class='rounded-lg m-2' id='posicao' name='novaposicao' type='text'>
+                    <button type='submit' value='add' name='confirm' class="btn btn-success my-4" style="width: 20%; margin-left: 40%; height:50px;">Adicionar Jogador</button>
+            </div>
         </form>
     <div>
 

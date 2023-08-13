@@ -76,7 +76,32 @@ class EditarPerfil(LoginRequiredMixin, UpdateView):
 
 def editarEquipe(request, pk):
     equipe = get_object_or_404(Equipe, pk=pk)
-    
+    if request.method == "POST":
+        form_type = request.POST.get("confirm")
+        if form_type == 'att':
+            quantidade = int(request.POST.get('quantidade'))
+            for jogador in range(1, quantidade+1):
+                id = request.POST.get(f'id{jogador}')
+                nome = request.POST.get(f'nome{jogador}')
+                numero = request.POST.get(f'numero{jogador}')
+                data = request.POST.get(f'data{jogador}')
+                posicao = request.POST.get(f'posicao{jogador}')
+
+                atleta = Jogador.objects.get(id=id)
+                atleta.nome = nome
+                atleta.numero = numero
+                if data == "":
+                    data = atleta.data_nascimento
+                atleta.data_nascimento = data
+                atleta.posicao = posicao
+                atleta.save()
+        if form_type == 'add':
+            nome = request.POST.get('novonome')
+            numero = request.POST.get('novonumero')
+            data = request.POST.get('novadata')
+            posicao = request.POST.get('novaposicao')
+            Jogador.objects.create(equipe=equipe, nome=nome, posicao=posicao, numero=numero, data_nascimento=data)
+
     return render(request, 'time_edit.html', {'equipe': equipe})
     
 

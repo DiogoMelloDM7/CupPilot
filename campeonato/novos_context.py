@@ -1,4 +1,4 @@
-from .models import Campeonato
+from .models import Campeonato, Equipe
 from django.contrib.auth.backends import BaseBackend
 from django.contrib.auth import get_user_model
 from django.db.models import Q
@@ -14,9 +14,11 @@ def lista_campeonatos_usuario(request):
         return {"lista_campeonatos": lista_campeonatos}
     
 def campeonatos_mais_vistos(request):
-    lista_campeonatos_mais_vistos = Campeonato.objects.all().order_by("-visualizacoes")
-    return {"campeonatos_vistos": lista_campeonatos_mais_vistos}
-
+    try:
+        lista_campeonatos_mais_vistos = Campeonato.objects.all().order_by("-visualizacoes")
+        return {"campeonatos_vistos": lista_campeonatos_mais_vistos}
+    except:
+        return {"campeonatos_vistos": lista_campeonatos_mais_vistos}
 
 
 class EmailOrUsernameBackend(BaseBackend):
@@ -35,3 +37,19 @@ class EmailOrUsernameBackend(BaseBackend):
             return get_user_model().objects.get(pk=user_id)
         except get_user_model().DoesNotExist:
             return None
+
+
+def quantidadeDeAtletas(request):
+    try:
+        equipe_id = int(request.path.split('/')[-1])
+        if equipe_id:
+            equipe = Equipe.objects.filter(id=equipe_id).first()
+            if equipe:
+                contador = equipe.jogadores.count()
+                return {"quantidade_de_atletas":contador}
+
+
+
+    except:
+        contador = 0
+        return {"quantidade_de_atletas":contador}

@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 class Jogador(models.Model):
-    equipe = models.ForeignKey("Equipe", related_name="jogador", on_delete=models.CASCADE)
+    equipe = models.ForeignKey("Equipe", related_name="jogadores", on_delete=models.CASCADE)
     nome = models.CharField(max_length=50)
     posicao = models.CharField(max_length=30)
     data_nascimento = models.DateField(blank=True, null=True)

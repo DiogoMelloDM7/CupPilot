@@ -67,6 +67,10 @@ td, th {
     background-color: rgb(231 229 228); width:80%; min-height: 50px; font-size: 1.3rem; font-family: Consolas; font-weight: 400; text-align: left; padding: 10px 0px; margin-top: 15px; border-radius: 10px; margin-left:auto; margin-right: auto;
 }
 
+.voltar{
+    background-color: white; border-radius: 30%; max-width: 120px; margin-left:1%; text-align: center; font-size: 1.2rem; font-family: Consolas; font-weight: 700; padding: 10px;
+}
+
 
 button > a:hover{
     color:black;
@@ -109,6 +113,11 @@ button > a:hover{
     margin:100px 600px;
 }
 
+.nome{
+    min-width:250px;
+}
+
+
 @media screen and (max-width: 1180px) {
     .navbar {
       display: none; /* Esconder a navbar em dispositivos menores */
@@ -133,6 +142,9 @@ button > a:hover{
   @media screen and (max-height: 700px) {
     .opcoes{
         background-color: #00174F; color: white; width: 250px; height: 60px; font-size: 1.2rem; border-radius: 10px; text-align: center; margin: 50px 60px;
+    }
+    .nome{
+        min-width:250px;
     }
    
   }
@@ -194,6 +206,9 @@ button > a:hover{
 
     .form{
         width: 100%;
+    }
+    .nome{
+        width:100px;
     }
   }
 

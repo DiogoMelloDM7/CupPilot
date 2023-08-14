@@ -1,5 +1,5 @@
 from django.urls import path, reverse_lazy
-from .views import Homepage, HomeLogin, criar_campeonato, Time, CampeonatoPage, MeusCampeonatos, EditCampeonato, CampeonatosMaisVistos, CriarConta, EditarPerfil, editarEquipe
+from .views import Homepage, HomeLogin, criar_campeonato, Time, CampeonatoPage, MeusCampeonatos, EditCampeonato, CampeonatosMaisVistos, CriarConta, EditarPerfil, editarEquipe, jogador_delete
 from django.contrib.auth import views as auth_views
 
 
@@ -20,4 +20,5 @@ urlpatterns = [
     path('editarperfil/<int:pk>', EditarPerfil.as_view(), name='editarperfil'),
     path('mudarsenha/',auth_views.PasswordChangeView.as_view(template_name='editarperfil.html', success_url=reverse_lazy('campeonato:homelogin')), name='mudarsenha'),
     path('editarequipe/<int:pk>', editarEquipe, name='editarequipe'),
+    path('excluir-jogador/<int:jogadorId>', jogador_delete, name='jogador_delete'),
 ]

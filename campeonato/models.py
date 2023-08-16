@@ -49,7 +49,7 @@ class Artilharia(models.Model):
     gols = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
-        return self.tabela_artilheiros
+        return self.tabela_artilheiros.nome
 
 
 class Assistente(models.Model):
@@ -58,15 +58,15 @@ class Assistente(models.Model):
     assistencias = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
-        return self.tabela_assistentes
+        return self.tabela_assistentes.nome
 
 
 class Jogo(models.Model):
     equipe_mandante = models.ForeignKey("Equipe", related_name="mandante", on_delete=models.CASCADE)
     equipe_visitante = models.ForeignKey("Equipe", related_name="visitante", on_delete=models.CASCADE)
     placar = models.CharField(max_length=30, blank=True, null=True)
-    jogador_marcador_jogo = models.ManyToManyField("Jogador", related_name="marcador_no_jogo", blank=True, null=True)
-    jogador_assistente_jogo = models.ManyToManyField("Jogador", related_name="passador_no_jogo", blank=True, null=True)
+    jogador_marcador_jogo = models.ManyToManyField("Jogador", related_name="marcador_no_jogo", blank=True,)
+    jogador_assistente_jogo = models.ManyToManyField("Jogador", related_name="passador_no_jogo", blank=True,)
     cartoes_amarelos = models.IntegerField(blank=True, null=True)
     cartoes_vermelhos = models.IntegerField(blank=True, null=True)
     horario = models.CharField(max_length=30, blank=True, null=True)
@@ -92,7 +92,7 @@ class Campeonato(models.Model):
 
 
 class Usuario(AbstractUser):
-    meus_campeonatos = models.ManyToManyField("Campeonato", related_name="meus_campeonatos", null=True)
+    meus_campeonatos = models.ManyToManyField("Campeonato", related_name="meus_campeonatos")
     #groups = models.ManyToManyField("auth.Group", related_name="usuarios")
     #user_permissions = models.ManyToManyField("auth.Permission", related_name="usuarios")
 

@@ -10,15 +10,15 @@
         <div class='opcoes3'>
         <h1>{{ object.nome|upper }}<h1>
         </div>
-        {% for player in object.jogador.all %}
+        {% for player in equipe.jogadores.all %}
                 <div class='jogador'>
-                    {{ player.nome|upper }} | {{ player.numero }} |
-                    {% if player.data_nascimento %}
+                   Nome: {{ player.nome|upper }} | Número: {{ player.numero }} |
+                    Data de nascimento: {% if player.data_nascimento %}
                       {{ player.data_nascimento }} |
                     {% else %}
                     <span style="color: red;">DATA NÃO INFORMADA </span>|
                     {% endif %}
-                       {{ player.posicao|upper }}
+                     Posição:   {{ player.posicao|upper }}
                 </div>
         {% endfor %}
         

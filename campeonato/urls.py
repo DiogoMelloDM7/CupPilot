@@ -1,5 +1,5 @@
 from django.urls import path, reverse_lazy
-from .views import Homepage, HomeLogin, criar_campeonato, Time, CampeonatoPage, MeusCampeonatos, EditCampeonato, CampeonatosMaisVistos, CriarConta, EditarPerfil, editarEquipe, jogador_delete
+from .views import Homepage, HomeLogin, criar_campeonato, Time, MeusCampeonatos, EditCampeonato, CampeonatosMaisVistos, CriarConta, EditarPerfil, editarEquipe, jogador_delete, campeonatopage
 from django.contrib.auth import views as auth_views
 
 
@@ -10,7 +10,8 @@ urlpatterns = [
     path('cuppilot/', HomeLogin.as_view(), name='homelogin'),
     path('criarcampeonato/', criar_campeonato, name='criar_campeonato'),
     path('detalhesequipe/<int:pk>' ,Time.as_view(), name='detalhes'),
-    path('campeonato/<int:pk>', CampeonatoPage.as_view(), name='campeonato_dados'),
+    #path('campeonato/<int:pk>', CampeonatoPage.as_view(), name='campeonato_dados'),
+    path('campeonato/<int:pk>', campeonatopage, name='campeonato_dados'),
     path('meuscampeonatos/', MeusCampeonatos.as_view(), name='meuscampeonatos'),
     path('editcampeonato/<int:pk>', EditCampeonato.as_view(), name='campeonato_edit'),
     path('campeonatosmaisvistos/', CampeonatosMaisVistos.as_view(), name='campeonatosmaisvistos'),

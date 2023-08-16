@@ -10,7 +10,6 @@ def lista_campeonatos_usuario(request):
         lista_campeonatos = Campeonato.objects.filter(organizador=user).order_by("-visualizacoes")
         return {"lista_campeonatos":lista_campeonatos}
     except:
-        lista_campeonatos = []
         return {"lista_campeonatos": lista_campeonatos}
     
 def campeonatos_mais_vistos(request):
@@ -47,9 +46,6 @@ def quantidadeDeAtletas(request):
             if equipe:
                 contador = equipe.jogadores.count()
                 return {"quantidade_de_atletas":contador}
-
-
-
     except:
         contador = 0
         return {"quantidade_de_atletas":contador}

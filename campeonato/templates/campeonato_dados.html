@@ -3,6 +3,7 @@
 {% block title%} {{ object.nome }} {% endblock %}
 
 {% block content %}
+
 <main class='fundo-azul' style='min-height: 789px;'>
     <div class='voltar'>
         <h1><a href="{% url 'campeonato:meuscampeonatos' %}">Voltar aos meus campeonato </a></h1>
@@ -14,9 +15,8 @@
             <tr>
                 <th>Posição<th class='campo-maior'>Equipe<th>Pontos<th>Vitórias<th>Empates<th>Derrotas<th>Gols Pró<th>Gols Contra<th>Aproveitamento
             </tr>
+            
             {% for equipe in object.equipes_campeonato.all %}
-            
-            
             
             <tr>
                 <th>{{ forloop.counter }}º

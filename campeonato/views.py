@@ -1,4 +1,3 @@
-from typing import Any, Dict
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.views.generic import TemplateView, DetailView, ListView, FormView, UpdateView
@@ -6,6 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Equipe, Campeonato, Usuario, Jogador
 from .forms import CriarContaForm
 from django.http import JsonResponse
+
 
 class Homepage(TemplateView):
 
@@ -26,7 +26,7 @@ class Time(LoginRequiredMixin, DetailView):
     template_name = "times_dados.html"
     model = Equipe
 
-class CampeonatoPage(LoginRequiredMixin, DetailView):
+'''class CampeonatoPage(LoginRequiredMixin, DetailView):
     template_name = 'campeonato_dados.html'
     model = Campeonato
 
@@ -35,12 +35,26 @@ class CampeonatoPage(LoginRequiredMixin, DetailView):
         Campeonato = self.get_object()
         Campeonato.visualizacoes += 1
         Campeonato.save()
-        return super().get(request, *args, **kwargs) #Redireciona o usuário para a página final
+        return super().get(request, *args, **kwargs) #Redireciona o usuário para a página final'''
+    
+def campeonatopage(request, pk):
+    try:
+        camp = get_object_or_404(Campeonato, pk=pk)
+        if camp:
+            return render(request, 'campeonato_dados.html', {'object': camp})
+        else:
+            return redirect('campeonato:homepage')
+    except TypeError:
+        
+        return redirect('campeonato:homepage')
+    
+
 
 
 class EditCampeonato(LoginRequiredMixin, DetailView):
     template_name = 'editcampeonato.html'
     model = Campeonato
+    
 
 
 class MeusCampeonatos(LoginRequiredMixin, ListView):
@@ -125,7 +139,6 @@ def criar_campeonato(request):
             numero_times = request.POST.get('numero_times')
             modelo = request.POST.get('modelo')
             ida_volta = request.POST.get('ida_volta')
-            cartoes_amarelos = request.POST.get('quant_cartoes')
             tipo_competidor = request.POST.get('competidor')
 
             campeonato = Campeonato.objects.create(

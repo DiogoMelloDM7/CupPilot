@@ -1,5 +1,5 @@
 from django.urls import path, reverse_lazy
-from .views import Homepage, HomeLogin, criar_campeonato, Time, MeusCampeonatos, EditCampeonato, CampeonatosMaisVistos, CriarConta, EditarPerfil, editarEquipe, jogador_delete, CampeonatoPage, equipe_delete
+from .views import Homepage, HomeLogin, criar_campeonato, Time, MeusCampeonatos, EditCampeonato, CampeonatosMaisVistos, CriarConta, EditarPerfil, editarEquipe, jogador_delete, CampeonatoPage, equipe_delete, campeonato_delete
 from django.contrib.auth import views as auth_views
 
 
@@ -22,5 +22,6 @@ urlpatterns = [
     path('editarequipe/<int:pk>', editarEquipe, name='editarequipe'),
     path('excluir-jogador/<int:jogadorId>', jogador_delete, name='jogador_delete'),
     path('excluirequipe/<int:pk>', equipe_delete, name='equipe_delete'),
+    path('excluircampeonato/<int:pk>', campeonato_delete, name='campeonato_delete'),
 
 ]

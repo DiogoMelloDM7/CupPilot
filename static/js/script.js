@@ -71,3 +71,26 @@ function exibeAdicionarEquipe(){
     let div = document.getElementById("divtime")
     div.style.display = "block"
 }
+
+function excluirCampeonato(campeonatoId) {
+    if (confirm("Tem certeza que deseja excluir este campeonato?")) {
+        const csrftoken = getCookie('csrftoken');
+        fetch(`/excluircampeonato/${campeonatoId}`, {
+            method: "DELETE",
+            headers: {
+                "X-CSRFToken": csrftoken,
+
+            },
+        })
+        .then((response) => {
+            if (response.ok) {
+                window.location.href = `/meuscampeonatos`
+            } else {
+                alert("Ocorreu um erro ao excluir o campeonato.");
+            }
+        })
+        .catch((error) => {
+            console.error("Erro na solicitação AJAX:", error);
+        });
+    }
+}

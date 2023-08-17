@@ -140,6 +140,14 @@ def equipe_delete(request, pk):
     return JsonResponse({"success": False})
 
 
+def campeonato_delete(request, pk):
+    if request.method == "DELETE":
+        camp = get_object_or_404(Campeonato, id=pk)
+        camp.delete()
+        return JsonResponse({"success": True})
+    return JsonResponse({"success": False})
+
+
 
 
 def criar_campeonato(request):

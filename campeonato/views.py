@@ -26,7 +26,7 @@ class Time(LoginRequiredMixin, DetailView):
     template_name = "times_dados.html"
     model = Equipe
 
-'''class CampeonatoPage(LoginRequiredMixin, DetailView):
+class CampeonatoPage(LoginRequiredMixin, DetailView):
     template_name = 'campeonato_dados.html'
     model = Campeonato
 
@@ -35,19 +35,7 @@ class Time(LoginRequiredMixin, DetailView):
         Campeonato = self.get_object()
         Campeonato.visualizacoes += 1
         Campeonato.save()
-        return super().get(request, *args, **kwargs) #Redireciona o usuário para a página final'''
-    
-def campeonatopage(request, pk):
-    try:
-        camp = get_object_or_404(Campeonato, pk=pk)
-        if camp:
-            return render(request, 'campeonato_dados.html', {'object': camp})
-        else:
-            return redirect('campeonato:homepage')
-    except TypeError:
-        
-        return redirect('campeonato:homepage')
-    
+        return super().get(request, *args, **kwargs) #Redireciona o usuário para a página final
 
 
 
@@ -91,11 +79,12 @@ class EditarPerfil(LoginRequiredMixin, UpdateView):
 def editarEquipe(request, pk):
     if request.user.is_authenticated:
         equipe = get_object_or_404(Equipe, pk=pk)
+        contador = equipe.jogadores.count()
         if request.method == "POST":
             form_type = request.POST.get("confirm")
             if form_type == 'att':
-                quantidade = int(request.POST.get('quantidade'))
-                for jogador in range(1, quantidade+1):
+                
+                for jogador in range(1, contador+1):
                     id = request.POST.get(f'id{jogador}')
                     nome = request.POST.get(f'nome{jogador}')
                     numero = request.POST.get(f'numero{jogador}')
@@ -110,6 +99,9 @@ def editarEquipe(request, pk):
                     atleta.data_nascimento = data
                     atleta.posicao = posicao
                     atleta.save()
+                nomeequipe = request.POST.get('nomeequipe')
+                equipe.nome = nomeequipe
+                equipe.save()
             if form_type == 'add':
                 nome = request.POST.get('novonome')
                 numero = request.POST.get('novonumero')
@@ -126,6 +118,14 @@ def jogador_delete(request, jogadorId):
     if request.method == "DELETE":
         jogador = get_object_or_404(Jogador, id=jogadorId)
         jogador.delete()
+        return JsonResponse({"success": True})
+    return JsonResponse({"success": False})
+
+
+def equipe_delete(request, pk):
+    if request.method == "DELETE":
+        equipe = get_object_or_404(Equipe, id=pk)
+        equipe.delete()
         return JsonResponse({"success": True})
     return JsonResponse({"success": False})
 

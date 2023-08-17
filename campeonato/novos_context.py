@@ -6,10 +6,12 @@ from django.db.models import Q
 
 def lista_campeonatos_usuario(request):
     try:
-        user = request.user
-        lista_campeonatos = Campeonato.objects.filter(organizador=user).order_by("-visualizacoes")
-        return {"lista_campeonatos":lista_campeonatos}
+        if request.user.is_authenticated:
+            user = request.user
+            lista_campeonatos = Campeonato.objects.filter(organizador=user).order_by("-visualizacoes")
+            return {"lista_campeonatos":lista_campeonatos}
     except:
+        lista_campeonatos = []
         return {"lista_campeonatos": lista_campeonatos}
     
 def campeonatos_mais_vistos(request):
@@ -36,16 +38,3 @@ class EmailOrUsernameBackend(BaseBackend):
             return get_user_model().objects.get(pk=user_id)
         except get_user_model().DoesNotExist:
             return None
-
-
-def quantidadeDeAtletas(request):
-    try:
-        equipe_id = int(request.path.split('/')[-1])
-        if equipe_id:
-            equipe = Equipe.objects.filter(id=equipe_id).first()
-            if equipe:
-                contador = equipe.jogadores.count()
-                return {"quantidade_de_atletas":contador}
-    except:
-        contador = 0
-        return {"quantidade_de_atletas":contador}

@@ -36,3 +36,33 @@ function excluirJogador(jogadorId, equipeId) {
         });
     }
 }
+
+function excluirEquipe(pk) {
+    if (confirm("Tem certeza que deseja excluir esta equipe?")) {
+        const csrftoken = getCookie('csrftoken');
+        fetch(`/excluirequipe/${pk}`, {
+            method: "DELETE",
+            headers: {
+                "X-CSRFToken": csrftoken,
+
+            },
+        })
+        .then((response) => {
+            if (response.ok) {
+                window.location.reload();
+            } else {
+                alert("Ocorreu um erro ao excluir a equipe.");
+            }
+        })
+        .catch((error) => {
+            console.error("Erro na solicitação AJAX:", error);
+        });
+    }
+}
+
+function exibeTrocaDeNome(){
+    let div = document.getElementById('trocadenome')
+    let div2 = document.getElementById('nomeatual')
+    div.style.display = "block";
+    div2.style.display = "none";
+}

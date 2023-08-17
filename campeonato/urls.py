@@ -1,5 +1,5 @@
 from django.urls import path, reverse_lazy
-from .views import Homepage, HomeLogin, criar_campeonato, Time, MeusCampeonatos, EditCampeonato, CampeonatosMaisVistos, CriarConta, EditarPerfil, editarEquipe, jogador_delete, campeonatopage
+from .views import Homepage, HomeLogin, criar_campeonato, Time, MeusCampeonatos, EditCampeonato, CampeonatosMaisVistos, CriarConta, EditarPerfil, editarEquipe, jogador_delete, CampeonatoPage, equipe_delete
 from django.contrib.auth import views as auth_views
 
 
@@ -10,8 +10,7 @@ urlpatterns = [
     path('cuppilot/', HomeLogin.as_view(), name='homelogin'),
     path('criarcampeonato/', criar_campeonato, name='criar_campeonato'),
     path('detalhesequipe/<int:pk>' ,Time.as_view(), name='detalhes'),
-    #path('campeonato/<int:pk>', CampeonatoPage.as_view(), name='campeonato_dados'),
-    path('campeonato/<int:pk>', campeonatopage, name='campeonato_dados'),
+    path('campeonato/<int:pk>', CampeonatoPage.as_view(), name='campeonato_dados'),
     path('meuscampeonatos/', MeusCampeonatos.as_view(), name='meuscampeonatos'),
     path('editcampeonato/<int:pk>', EditCampeonato.as_view(), name='campeonato_edit'),
     path('campeonatosmaisvistos/', CampeonatosMaisVistos.as_view(), name='campeonatosmaisvistos'),
@@ -22,4 +21,6 @@ urlpatterns = [
     path('mudarsenha/',auth_views.PasswordChangeView.as_view(template_name='editarperfil.html', success_url=reverse_lazy('campeonato:homelogin')), name='mudarsenha'),
     path('editarequipe/<int:pk>', editarEquipe, name='editarequipe'),
     path('excluir-jogador/<int:jogadorId>', jogador_delete, name='jogador_delete'),
+    path('excluirequipe/<int:pk>', equipe_delete, name='equipe_delete'),
+
 ]

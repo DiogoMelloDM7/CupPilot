@@ -21,7 +21,9 @@
             
             <tr>
                 <th>{{ forloop.counter }}º
-                <td><a href="{% url 'campeonato:editarequipe' equipe.id %}">{{ equipe.nome }}</a>
+                <td><a href="{% url 'campeonato:editarequipe' equipe.id %}">{{ equipe.nome }}
+                <span class="material-symbols-outlined btn btn-success ml-4" >edit</span></a>
+                <button class='btn btn-danger' onclick="excluirEquipe({{ equipe.id }})"><span class="material-symbols-outlined">Delete</span></button>
                 <td>{{ equipe.pontos }}
                 <td>{{ equipe.vitorias }}
                 <td>{{ equipe.empates }}

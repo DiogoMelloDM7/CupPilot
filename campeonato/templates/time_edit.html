@@ -11,14 +11,19 @@
         <h1><a href="{% url 'campeonato:campeonato_edit' equipe.campeonato.id %}">Voltar ao campeonato </a></h1>
     </div>
     <div class='centro' style="min-height: 789px;">
-        <div class='opcoes3'>
-        <h1>{{ equipe.nome|upper }}<h1>
+        <div class='opcoes3' id='nomeatual'>
+        <h1>{{ equipe.nome|upper }}<button class='btn btn-success ml-4' onclick="exibeTrocaDeNome()"><span class="material-symbols-outlined">edit</span>Alterar nome</button><h1>
         </div>
-        {% if quantidade_de_atletas > 0 %}
+        
         <form method="POST" autocomplete='off' action="{% url 'campeonato:editarequipe' equipe.id %}">
             {% csrf_token %}
+            <div class='nome-equipe' id='trocadenome'>
+                <label for='nomeequipe' style='color:white;'>NOME DA EQUIPE</label>
+                <input class='rounded-lg m-2 nome' name='nomeequipe' type='text' placeholder="Insira o nome desejado" id='inome' value="{{ equipe.nome }}">
+            </div>
         {% for player in equipe.jogadores.all %}
                 <div class='jogador py-3'>
+                    
                     
                     <input name='id{{ forloop.counter }}' value="{{ player.id }}" type="hidden">
                     <label for='nome'>NOME: </label>
@@ -38,10 +43,10 @@
                     <button class='btn btn-danger' style="min-width: 20%; margin-left: 40%; min-height:50px;" onclick="excluirJogador('{{ player.id }}', '{{ equipe.id }}')">Excluir Jogador</button>
                 </div>
         {% endfor %}
-        <input type='hidden' name='quantidade' value='{{ quantidade_de_atletas }}'>
+        
         <button type='submit' value='att' name='confirm' class="btn btn-success my-4" style="min-width: 20%; margin-left: 40%; height:50px;">Confirmar alterações</button>
         </form>
-        {% endif %}
+        
         <form method='POST' >
             {% csrf_token %}
             <div class='jogador'>

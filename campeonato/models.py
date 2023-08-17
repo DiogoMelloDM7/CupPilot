@@ -37,7 +37,7 @@ class Equipe(models.Model):
     vitorias = models.IntegerField(blank=True, null=True, default=0)
     empates = models.IntegerField(blank=True, null=True, default=0)
     derrotas = models.IntegerField(blank=True, null=True, default=0)
-    aproveitamento = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+    aproveitamento = models.DecimalField(max_digits=5, decimal_places=2, default=0, blank=True, null=True)
 
     def __str__(self):
         return self.nome + " - " + self.campeonato.nome

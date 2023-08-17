@@ -51,12 +51,14 @@ td, th {
     background-color: rgb(207 250 254);
 }
 
+
+
 .opcoes {
     background-color: #00174F; color: white; width: 500px; height: 100px; font-size: 1.7rem; border-radius: 10px; text-align: center; margin: 70px 100px;
 }
 
 .opcoes2 {
-    background-color: #00174F; color: white; width: 60%; height: 150px; font-size: 1.7rem; border-radius: 10px; text-align: center; margin: auto; padding: 30px 0; font-family: Consolas;
+    background-color: #00174F; color: white; width: 60%; height: 150px; font-size: 1.7rem; border-radius: 10px; text-align: center; margin: auto; padding: 30px 0; font-family: Consolas; 
 }
 
 .opcoes3 {
@@ -69,6 +71,10 @@ td, th {
 
 .jogador{
     background-color: rgb(231 229 228); width:80%; min-height: 50px; font-size: 1.3rem; font-family: Consolas; font-weight: 400; text-align: left; padding: 10px 0px; margin-top: 15px; border-radius: 10px; margin-left:auto; margin-right: auto;
+}
+
+.time{
+    background-color: rgb(231 229 228); width:100%; height: 100px; font-size: 1.3rem; font-family: Consolas; font-weight: 400; text-align: left; padding: 10px 0px; margin-top: 15px; border-radius: 10px; display: none;
 }
 
 .voltar{
@@ -101,7 +107,7 @@ button > a:hover{
 }
 
 .jogo{
-    background-color: white; width: 300px; min-height: 100px; padding: 0px 10px; text-align: center; margin-left:auto;
+    background-color: white; max-width: 300px; min-height: 100px; padding: 0px 10px; text-align: center; margin-left:auto;
     margin-right:auto; margin-top: 15px; margin-bottom:15px; border-radius: 20px;
 }
 
@@ -119,6 +125,10 @@ button > a:hover{
 
 .nome{
     min-width:250px;
+}
+
+.inputmenor{
+    min-width: 250px;
 }
 
 
@@ -139,6 +149,10 @@ button > a:hover{
 
     .centro{
         margin: 0% 5%;
+    }
+    .jogo{
+        background-color: white; width: 200px; min-height: 100px; padding: 0px 10px; text-align: center; margin-left:auto;
+        margin-right:auto; margin-top: 15px; margin-bottom:15px; border-radius: 20px;
     }
     
   }
@@ -187,6 +201,9 @@ button > a:hover{
         background-color: white; width: 200px; min-height: 100px; padding: 0px 10px; text-align: center; margin-left:auto;
         margin-right:auto; margin-top: 15px; margin-bottom:15px; border-radius: 20px;
     }
+    .inputmenor{
+        max-width: 150px;
+    }
 
   }
 
@@ -213,6 +230,9 @@ button > a:hover{
     }
     .nome{
         width:100px;
+    }
+    .inputmenor{
+        width: 100px;
     }
   }
 

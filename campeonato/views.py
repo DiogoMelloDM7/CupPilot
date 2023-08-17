@@ -42,6 +42,16 @@ class CampeonatoPage(LoginRequiredMixin, DetailView):
 class EditCampeonato(LoginRequiredMixin, DetailView):
     template_name = 'editcampeonato.html'
     model = Campeonato
+
+    def post(self, request, *args, **kwargs):
+        if request.method == "POST":
+            nome = request.POST.get('nome')
+            id_camp = request.POST.get('id')
+            camp = get_object_or_404(Campeonato, id=id_camp)
+            Equipe.objects.create(campeonato=camp, nome=nome)
+            return redirect(reverse('campeonato:campeonato_edit', args=[camp.id]))
+
+
     
 
 

@@ -66,3 +66,8 @@ function exibeTrocaDeNome(){
     div.style.display = "block";
     div2.style.display = "none";
 }
+
+function exibeAdicionarEquipe(){
+    let div = document.getElementById("divtime")
+    div.style.display = "block"
+}

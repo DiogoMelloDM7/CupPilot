@@ -9,7 +9,7 @@
         <h1><a href="{% url 'campeonato:meuscampeonatos' %}">Voltar aos meus campeonato </a></h1>
     </div>
     <div class="lg:py-16 px-16 justify-between w-full flex flex-col lg:flex-row">
-    <div class="flex w-full lg:w-8/12 mb-4 lg:mb-0">
+    <div class="flex w-full lg:w-9/12 mb-4 lg:mb-0">
         <div class='overflow-x-auto'>
         <table class='table-auto'>
             <tr>
@@ -37,8 +37,23 @@
             {% endfor %}
 
         </table>
+        <div class='btn btn-success mt-2'>
+            <button onclick="exibeAdicionarEquipe()" id='botaoadd'>Adicionar Equipe <span class="material-symbols-outlined">
+                add
+                </span></button>
+        </div>
+        <form method='post'>
+            {% csrf_token %} 
+            <div class='time' id='divtime'>
+            <label for="nome">Nome da Equipe</label>
+            <input type="text" id="inome" name="nome" class='inputmenor'>
+            <input type='hidden' name='id' value="{{ object.id }}">
+            <button type='submit' class="btn btn-success my-8">Adicionar Equipe</button>
+            </div>
+        </form>
     </div>
     </div>
+    
     <div class="lg:flex lg:w-3/12 bg-blue-800 flex-col rounded-xl" style='min-height:350px;'>
             <div class='jogo py-1' style='margin-top:40px;'>
                 <h1 class='text-lg font-bold'>Local </h1>
@@ -58,8 +73,13 @@
             
             
         <div class="flex justify-between">
-            <a href="#"><h1 class='avancar_voltar'>< Rodada Anterior </h1><a>
-            <a href="#"><h1 class='avancar_voltar'>Próxima Rodada ></h1></a>
+            <a href="#"><h1 class='avancar_voltar ml-2 mb-2'><span class="material-symbols-outlined">
+                arrow_back
+                </span></h1><a>
+                    <h1 style='color:white; font-size:1.6rem;'>Rodada 1</h1>
+            <a href="#"><h1 class='avancar_voltar mr-2 mb-2'><span class="material-symbols-outlined">
+                arrow_forward
+                </span></h1></a>
 
         </div>
     </div>

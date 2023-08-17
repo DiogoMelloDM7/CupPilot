@@ -9,7 +9,7 @@
         <h1><a href="{% url 'campeonato:meuscampeonatos' %}">Voltar aos meus campeonato </a></h1>
     </div>
     <div class="lg:py-16 px-16 justify-between w-full flex flex-col lg:flex-row">
-    <div class="flex w-full lg:w-8/12 mb-4 lg:mb-0">
+    <div class="flex w-full lg:w-9/12 mb-4 lg:mb-0">
         <div class='overflow-x-auto'>
         <table class='table-auto'>
             <tr>
@@ -56,8 +56,12 @@
             
             
         <div class="flex justify-between">
-            <a href="#"><h1 class='avancar_voltar'>< Rodada Anterior </h1><a>
-            <a href="#"><h1 class='avancar_voltar'>Próxima Rodada ></h1></a>
+            <a href="#"><h1 class='avancar_voltar'><span class="material-symbols-outlined">
+                arrow_back
+                </span></h1><a>
+            <a href="#"><h1 class='avancar_voltar'><span class="material-symbols-outlined">
+                arrow_forward
+                </span></h1></a>
 
         </div>
     </div>

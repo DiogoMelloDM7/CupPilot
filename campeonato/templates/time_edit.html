@@ -20,6 +20,7 @@
             <div class='nome-equipe' id='trocadenome'>
                 <label for='nomeequipe' style='color:white;'>NOME DA EQUIPE</label>
                 <input class='rounded-lg m-2 nome' name='nomeequipe' type='text' placeholder="Insira o nome desejado" id='inome' value="{{ equipe.nome }}">
+                <button type='submit' value='att' name='confirm' class="btn btn-success my-4">Confirmar alteração</button>
             </div>
         {% for player in equipe.jogadores.all %}
                 <div class='jogador py-3'>
@@ -40,7 +41,7 @@
                     {% endif %}
                     <label for='posicao'>POSIÇÃO: </label>
                     <input class='rounded-lg m-2 nome' id='posicao' name='posicao{{ forloop.counter }}' type='text' value='{{ player.posicao|upper }}'>
-                    <button class='btn btn-danger' style="min-width: 20%; margin-left: 40%; min-height:50px;" onclick="excluirJogador('{{ player.id }}', '{{ equipe.id }}')">Excluir Jogador</button>
+                    <button class='btn btn-danger' style="min-width: 20%; margin-left: 40%; min-height:50px;" onclick="excluirJogador('{{ player.id }}', '{{ equipe.id }}')"> <span class="material-symbols-outlined">Delete</span> Excluir Jogador </button>
                 </div>
         {% endfor %}
         
@@ -61,7 +62,9 @@
                     
                     <label for='posicao'>POSIÇÃO: </label>
                     <input class='rounded-lg m-2' id='posicao' name='novaposicao' type='text'>
-                    <button type='submit' value='add' name='confirm' class="btn btn-success my-4" style="min-width: 20%; margin-left: 40%; min-height:50px;">Adicionar Jogador</button>
+                    <button type='submit' value='add' name='confirm' class="btn btn-success my-4" style="min-width: 20%; margin-left: 40%; min-height:50px;"><span class="material-symbols-outlined">
+                        add
+                        </span>Adicionar Jogador</button>
             </div>
         </form>
     <div>

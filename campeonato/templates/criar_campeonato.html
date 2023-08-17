@@ -4,10 +4,12 @@
 
 {% block content%}
 
-<main class='fundo-azul py-2' style='min-height: 789px;'>
+<main class='fundo-azul' style='min-height: 789px;'>
+    
     <div class='opcoes2'>
         <h1>Crie seu campeonato agora mesmo, escolha abaixo as configurações de acordo com suas preferências</h1>
     </div>
+    
     <form class='form' method="POST" autocomplete='off'>
         {% csrf_token %}
         <div>
@@ -42,10 +44,9 @@
             <input class='checkbox' type='radio' name='competidor' id='equipe' value='coletivo'>
         </div>
 
-        <button name="confirm" type="submit" class="btn btn-success mt-4 w-5/12">Criar Campeonato</button>
+        <button name="confirm" type="submit" class="btn btn-success mb-4 w-5/12 ">Criar Campeonato</button>
 
     </form>
-
 </main>
 
 {% endblock %}

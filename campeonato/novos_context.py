@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from .models import Campeonato, Equipe
 from django.contrib.auth.backends import BaseBackend
 from django.contrib.auth import get_user_model
@@ -38,3 +39,40 @@ class EmailOrUsernameBackend(BaseBackend):
             return get_user_model().objects.get(pk=user_id)
         except get_user_model().DoesNotExist:
             return None
+
+
+def geracaoDosJogos(request):
+    try:
+        from itertools import combinations
+        pk = int(request.path.split('/')[-1])
+        camp = get_object_or_404(Campeonato, id=pk)
+        lista_das_equipes = []
+        quant_times = 0
+        rodadas = {}
+        for time in camp.equipes_campeonato.all():
+            lista_das_equipes.append(time.nome)
+            quant_times += 1
+        confrontos = list(combinations(lista_das_equipes, 2))
+        for c in range(1, quant_times):
+            confrontos_copy = confrontos.copy()
+            jogos_na_rodada = []
+            times_jogados = set()
+
+            while confrontos_copy and len(jogos_na_rodada) < quant_times // 2:
+                jogo = confrontos_copy.pop(0)
+                time1, time2 = jogo
+
+                if time1 not in times_jogados and time2 not in times_jogados:
+                    jogo = time1 + " X " + time2
+                    jogos_na_rodada.append(jogo)
+                    times_jogados.add(time1)
+                    times_jogados.add(time2)
+
+            rodadas[f'Rodada {c}'] = jogos_na_rodada
+            confrontos = [c for c in confrontos if c not in jogos_na_rodada]
+        
+
+        return {"rodadas": rodadas}
+    except:
+        rodadas = {}
+        return {"rodadas": rodadas}

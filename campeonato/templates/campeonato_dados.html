@@ -37,21 +37,18 @@
     </div>
     </div>
     <div class="lg:flex lg:w-3/12 bg-blue-800 flex-col rounded-xl" style='min-height:350px;'>
-            <div class='jogo py-1' style='margin-top:40px;'>
-                <h1 class='text-lg font-bold'>Local </h1>
-                <h1 class='text-lg font-bold'>Horário </h1>
-                <h1 class='text-xl font-bold pt-4'>BANIDOS 5 X 1 REAL MADRID</h1>
-            </div>
-            <div class='jogo py-1'>
-                <h1 class='text-lg font-bold'>Local </h1>
-                <h1 class='text-lg font-bold'>Horário </h1>
-                <h1 class='text-xl font-bold pt-4'>Manchester City 2 X 0 Manchester United</h1>
-            </div>
-            <div class='jogo py-1'>
-                <h1 class='text-lg font-bold'>Local </h1>
-                <h1 class='text-lg font-bold'>Horário </h1>
-                <h1 class='text-xl font-bold pt-4'>Manchester City 2 X 0 Manchester United</h1>
-            </div>
+            {% for rodada,jogos in rodadas.items %}
+                <h1 class='rodada'>{{ rodada }}</h1>
+                {% for jogo in jogos %}
+                <div class='jogo py-1' style='margin-top:40px;'>
+                    <h1 class='text-lg font-bold'>Local </h1>
+                    <h1 class='text-lg font-bold'>Horário </h1>
+                    <h1 class='text-xl font-bold pt-4'>{{ jogo }}</h1>
+                </div>
+                {% endfor %}
+            {% endfor %}
+            
+            
         
             
             

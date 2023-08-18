@@ -67,6 +67,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'campeonato.novos_context.lista_campeonatos_usuario',
                 'campeonato.novos_context.campeonatos_mais_vistos',
+                'campeonato.novos_context.geracaoDosJogos',
                 
             ],
         },

@@ -55,28 +55,22 @@
     </div>
     
     <div class="lg:flex lg:w-3/12 bg-blue-800 flex-col rounded-xl" style='min-height:350px;'>
-            <div class='jogo py-1' style='margin-top:40px;'>
-                <h1 class='text-lg font-bold'>Local </h1>
-                <h1 class='text-lg font-bold'>Horário </h1>
-                <h1 class='text-xl font-bold pt-4'>BANIDOS 5 X 1 REAL MADRID</h1>
-            </div>
-            <div class='jogo py-1'>
-                <h1 class='text-lg font-bold'>Local </h1>
-                <h1 class='text-lg font-bold'>Horário </h1>
-                <h1 class='text-xl font-bold pt-4'>Manchester City 2 X 0 Manchester United</h1>
-            </div>
-            <div class='jogo py-1'>
-                <h1 class='text-lg font-bold'>Local </h1>
-                <h1 class='text-lg font-bold'>Horário </h1>
-                <h1 class='text-xl font-bold pt-4'>Manchester City 2 X 0 Manchester United</h1>
-            </div>
+        {% for rodada,jogos in rodadas.items %}
+            <h1 class='rodada'>{{ rodada }}</h1>
+            {% for jogo in jogos %}
+                <div class='jogo py-1' style='margin-top:40px;'>
+                    <h1 class='text-lg font-bold'>Local </h1>
+                    <h1 class='text-lg font-bold'>Horário </h1>
+                    <h1 class='text-xl font-bold pt-4'>{{ jogo }}</h1>
+                </div>
+            {% endfor %}
+        {% endfor %}    
             
             
         <div class="flex justify-between">
             <a href="#"><h1 class='avancar_voltar ml-2 mb-2'><span class="material-symbols-outlined">
                 arrow_back
                 </span></h1><a>
-                    <h1 style='color:white; font-size:1.6rem;'>Rodada 1</h1>
             <a href="#"><h1 class='avancar_voltar mr-2 mb-2'><span class="material-symbols-outlined">
                 arrow_forward
                 </span></h1></a>

@@ -30,12 +30,15 @@ class CampeonatoPage(LoginRequiredMixin, DetailView):
     template_name = 'campeonato_dados.html'
     model = Campeonato
 
+
     def get(self, request, *args, **kwargs):
         # Contabilizando visualizacoes
-        Campeonato = self.get_object()
-        Campeonato.visualizacoes += 1
-        Campeonato.save()
+        camp = self.get_object()
+        camp.visualizacoes += 1
+        camp.save()
         return super().get(request, *args, **kwargs) #Redireciona o usuário para a página final
+        
+
 
 
 
@@ -174,3 +177,6 @@ def criar_campeonato(request):
 
 
 
+
+
+    

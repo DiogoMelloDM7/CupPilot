@@ -61,7 +61,12 @@
                 <div class='jogo py-1' style='margin-top:40px;'>
                     <h1 class='text-lg font-bold'>Local </h1>
                     <h1 class='text-lg font-bold'>Horário </h1>
-                    <h1 class='text-xl font-bold pt-4'>{{ jogo }}</h1>
+                    <h1 class='text-xl font-bold pt-4'>
+                        {{ jogo }}<br>
+                        <input type='number' style='width: 50px; background-color: light-gray; border: 1px solid black;padding: 5px;' name="placar_{{ forloop.counter0 }}_"> X 
+                        <input type='number' style='width: 50px; background-color: light-gray; border: 1px solid black;padding: 5px;'>
+
+                    </h1>
                 </div>
             {% endfor %}
         {% endfor %}    

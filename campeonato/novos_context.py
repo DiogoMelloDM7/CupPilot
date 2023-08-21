@@ -49,6 +49,7 @@ def geracaoDosJogos(request):
         lista_das_equipes = [time.nome for time in camp.equipes_campeonato.all()]
         quant_times = len(lista_das_equipes)
         rodadas = {}
+        mandantes, visitantes = [], []
         confrontos = list(combinations(lista_das_equipes, 2))
         
         jogos_por_rodada = quant_times // 2
@@ -71,11 +72,13 @@ def geracaoDosJogos(request):
                     rodada_jogos.append(jogo)
                     times_na_rodada.add(time1)
                     times_na_rodada.add(time2)
+                    mandantes.append(time1)
+                    visitantes.append(time2)
                     confrontos.remove((time1, time2))
 
-            rodadas[f'rodada{rodada_num}'] = rodada_jogos
+            rodadas[f'Rodada {rodada_num}'] = rodada_jogos
 
-        return {"rodadas": rodadas}
+        return {"rodadas": rodadas, "visitantes":visitantes, "mandantes": mandantes}
     except:
         rodadas = {}
         return {"rodadas": rodadas}

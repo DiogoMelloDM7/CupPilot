@@ -94,3 +94,38 @@ function excluirCampeonato(campeonatoId) {
         });
     }
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    const rodadas = document.querySelectorAll(".rodada-principal");
+    let rodadaAtual = 1;
+
+    function mostrarRodada(numeroRodada) {
+        rodadas.forEach(function(rodada) {
+            rodada.style.display = "none";
+        });
+        document.getElementById(`rodadaRodada ${numeroRodada}`).style.display = "block";
+    }
+
+    mostrarRodada(rodadaAtual);
+
+    document.querySelectorAll(".avancar").forEach(function(botao) {
+        botao.addEventListener("click", function() {
+            rodadaAtual++;
+            if (rodadaAtual > rodadas.length) {
+                rodadaAtual = 1;
+            }
+            mostrarRodada(rodadaAtual);
+        });
+    });
+
+    document.querySelectorAll(".voltar").forEach(function(botao) {
+        botao.addEventListener("click", function() {
+            rodadaAtual--;
+            if (rodadaAtual < 1) {
+                rodadaAtual = rodadas.length;
+            }
+            mostrarRodada(rodadaAtual);
+        });
+    });
+});
+

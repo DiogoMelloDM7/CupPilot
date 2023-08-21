@@ -5,7 +5,7 @@
 {% block content %}
 <main class='fundo-azul' style='min-height: 789px;'>
     
-    <div class='voltar'>
+    <div class='voltar_pagina'>
         <h1><a href="{% url 'campeonato:meuscampeonatos' %}">Voltar aos meus campeonato </a></h1>
     </div>
     <div class="lg:py-16 px-16 justify-between w-full flex flex-col lg:flex-row">
@@ -54,10 +54,11 @@
     </div>
     </div>
     
-    <div class="lg:flex lg:w-3/12 bg-blue-800 flex-col rounded-xl" style='min-height:350px;'>
-        {% for rodada,jogos in rodadas.items %}
-            <h1 class='rodada'>{{ rodada }}</h1>
-            {% for jogo in jogos %}
+    {% for rodada,jogos in rodadas.items %}
+    <div id="rodada{{ rodada }}" class="lg:flex lg:w-3/12 bg-blue-800 flex-col rounded-xl rodada-principal" style='min-height:350px; display: none;'>
+            
+                <h1 class='rodada'>{{ rodada }}</h1>
+                {% for jogo in jogos %}
                 <div class='jogo py-1' style='margin-top:40px;'>
                     <h1 class='text-lg font-bold'>Local </h1>
                     <h1 class='text-lg font-bold'>Horário </h1>
@@ -65,23 +66,24 @@
                         {{ jogo }}<br>
                         <input type='number' style='width: 50px; background-color: light-gray; border: 1px solid black;padding: 5px;' name="placar_{{ forloop.counter0 }}_"> X 
                         <input type='number' style='width: 50px; background-color: light-gray; border: 1px solid black;padding: 5px;'>
-
                     </h1>
                 </div>
-            {% endfor %}
-        {% endfor %}    
+                
+                {% endfor %}
             
+       
             
         <div class="flex justify-between">
-            <a href="#"><h1 class='avancar_voltar ml-2 mb-2'><span class="material-symbols-outlined">
+            <button class="voltar"><span class="material-symbols-outlined">
                 arrow_back
-                </span></h1><a>
-            <a href="#"><h1 class='avancar_voltar mr-2 mb-2'><span class="material-symbols-outlined">
+                </span></button>
+            <button class="avancar"><span class="material-symbols-outlined">
                 arrow_forward
-                </span></h1></a>
+                </span></button>
 
         </div>
     </div>
+    {% endfor %}
 </main>
 
 {% endblock %}

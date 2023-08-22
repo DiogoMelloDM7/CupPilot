@@ -103,7 +103,11 @@ document.addEventListener("DOMContentLoaded", function() {
         rodadas.forEach(function(rodada) {
             rodada.style.display = "none";
         });
+        
         document.getElementById(`rodadaRodada ${numeroRodada}`).style.display = "block";
+        
+        
+        
     }
 
     mostrarRodada(rodadaAtual);
